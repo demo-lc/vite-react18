@@ -16,7 +16,7 @@ jobs:
 
       - name: Install and Build 🔧  # 第二步，装node包，构建
         run: |
-          npm install
+          yarn
           CI=false && npm run build  # 你自己项目的构建命令
 
       - name: Deploy 🚀 # 部署

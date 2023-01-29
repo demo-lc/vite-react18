@@ -24,4 +24,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v3 # 部署到github的静态页，会将打包后的文件推送至下面填写的分支，可以直接新开一个分支用来放打包后的文件
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: static-page # 编译文件分支
           FOLDER: dist # 编译文件的文件夹

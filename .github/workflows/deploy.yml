@@ -3,7 +3,7 @@ name: Deploy page # action的名字，会显示在github Actions的All workflows
 on: # 触发条件
   push: # push代码时
     branches: # 触发push的分支
-      - main # 可以修改成你自己想构建的分支
+      - master # 可以修改成你自己想构建的分支
 
 jobs:
   build-and-deploy:

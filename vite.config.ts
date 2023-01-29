@@ -13,7 +13,7 @@ export default defineConfig({
     },
     // extensions: ['.tsx', '.ts', '.json', '.mjs', '.js'],
   },
-
+  base: './',
   plugins: [react()],
   css: {
     modules: {

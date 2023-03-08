@@ -2,8 +2,10 @@ import IsShowComponent from '@/functionComponents/authComponents/isShow/index';
 import type { ColumnsType } from 'antd/es/table';
 import styles from './index.module.less';
 import { Space, Table, Tag, Button,Form } from 'antd';
-import CustomSelect from '@/component/customSelect/index';
+import CustomSelect from '@/component/customSelect';
 import { useEffect, useReducer, useState, useRef, StyleHTMLAttributes } from 'react';
+import useStore from '@/store/home';
+import { useLocalStorageState } from 'ahooks';
 
 
 const { homeIndexModule ,homeIndex} = styles;
@@ -51,8 +53,12 @@ const constant = ['1'];
 
 const FunctionComponent = () => {
 
+  const [path, setPath] = useLocalStorageState<string | undefined>('path', {
+    defaultValue: '',
+  });
 
-  
+
+  const { count, increment, decrement,bees,addBees } = useStore();
 
   const [depsArray, setDepsArray] = useState<any[]>(['2']);
   const [depsObject, setDepsObject] = useState<any>({});
@@ -149,7 +155,13 @@ const FunctionComponent = () => {
       <div className={styles.button} >
 
         <div>deps:{ depsArray}</div>
-        <div>current:{ current}</div>
+        <div>current:{current}</div>
+        
+        <Button type='primary' onClick={() => {
+          setPath('home');
+        }} >
+           home更改localStorage
+        </Button>
         
         <Button type='primary' onClick={()=>{forceUpdate(i=>i+1)}} >
            刷新  
@@ -189,7 +201,30 @@ const FunctionComponent = () => {
 
       <Button onClick={() => {
         form.submit();
-    }} >提交</Button>
+      }} >提交</Button>
+      
+
+      <div>
+      count:{count}
+      </div>
+      <div>
+      bees:{bees}
+      </div>
+      <div>
+        <Button onClick={() => {
+          addBees(12);
+        }} >dees+</Button>
+      </div>
+      <div>
+        <Button onClick={() => {
+          increment();
+        }} >+</Button>
+      </div>
+      <div>
+        <Button onClick={() => {
+          decrement();
+        }} >-</Button>
+      </div>
     </div>
   );
 };

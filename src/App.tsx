@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import Home from '@/view/home/index';
-import CustomSelect from '@/component/customSelect';
+
 import styles from './App.module.less';
 import { ConfigProvider } from 'antd';
+import { BrowserRouter, useRoutes } from 'react-router-dom';
+import { routes } from './routes';
 
 function App() {
+  const element = useRoutes(routes);
   return (
     <ConfigProvider
       theme={{
@@ -13,7 +15,7 @@ function App() {
         },
       }}>
       <div className={styles.app}>
-        <Home />
+        {element}
       </div>
     </ConfigProvider>
   );
